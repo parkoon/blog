@@ -1,0 +1,12 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-36logger{36} %clr([%-5level]) : %msg%n"
+  level:
+    root: info
+    org.springframework: info
+    com.hhwaaaaa1.blog: debug
