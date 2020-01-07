@@ -15,6 +15,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <node.version>v10.9.0</node.version>
+        <npm.version>6.2.0</npm.version>
     </properties>
 
     <dependencies>
@@ -42,6 +44,54 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.9.0</version>
+                <configuration>
+                    <installDirectory>target</installDirectory>
+
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <!-- optional: with node version greater than 4.0.0 will use npm provided by node distribution -->
+                    <npmVersion>${npm.version}</npmVersion>
+                    <!-- optional: where to download node and npm from. Defaults to https://nodejs.org/dist/ -->
+                    <downloadRoot>https://nodejs.org/dist/</downloadRoot>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <!-- optional: default phase is "generate-resources" -->
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <!-- optional: default phase is "generate-resources" -->
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <!-- optional: The default argument is actually "install", so unless you need to run some other npm command, you can remove this whole <configuration> section. -->
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>webpack build</id>
+                        <goals>
+                            <goal>webpack</goal>
+                        </goals>
+                        <!-- optional: the default phase is "generate-resources" -->
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <!-- optional: if not specified, it will run webpack's default build (and you can remove this whole <configuration> section.) -->
+                            <arguments>-p</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
