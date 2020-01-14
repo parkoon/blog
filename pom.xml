@@ -55,8 +55,14 @@
                     <nodeVersion>${node.version}</nodeVersion>
                     <!-- optional: with node version greater than 4.0.0 will use npm provided by node distribution -->
                     <npmVersion>${npm.version}</npmVersion>
+
                     <!-- optional: where to download node and npm from. Defaults to https://nodejs.org/dist/ -->
-                    <downloadRoot>https://nodejs.org/dist/</downloadRoot>
+                    <!-- <downloadRoot>https://nodejs.org/dist/</downloadRoot> -->
+
+                    <!-- optional: where to download node from. Defaults to https://nodejs.org/dist/ -->
+                    <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+                    <!-- optional: where to download npm from. Defaults to https://registry.npmjs.org/npm/-/ -->
+                    <npmDownloadRoot>https://registry.npmjs.org/npm/-/</npmDownloadRoot>
                 </configuration>
                 <executions>
                     <execution>
