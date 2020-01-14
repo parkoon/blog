@@ -48,6 +48,5 @@ module.exports = {
     new HtmlWebpackRootPlugin(),
   ],
   devtool: 'eval',
-  cache: true,
   mode: 'development',
 };
