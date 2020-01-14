@@ -3,17 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname, 'src/main/views'),
+  context: path.resolve(__dirname, 'src/main/client'),
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  entry: {
-    app: './src/app',
-    admin: './src/admin',
-  },
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'src/main/webapp/dist'),
-    filename: '[name].bundle.js',
+    filename: 'app.bundle.js',
   },
   module: {
     rules: [
@@ -26,7 +23,6 @@ module.exports = {
               ['@babel/preset-env', { targets: { browsers: ['> 1% in KR'] } }],
               '@babel/preset-react',
             ],
-            plugins: ['@babel/plugin-proposal-class-properties'],
           },
         },
         exclude: /node_modules/,
@@ -41,13 +37,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Blog',
-      filename: 'app.html',
-      chunks: ['app'],
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Admin for blog',
-      filename: 'admin.html',
-      chunks: ['admin'],
+      filename: 'index.html',
     }),
     new HtmlWebpackRootPlugin(),
   ],
