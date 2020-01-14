@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 
@@ -11,6 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'src/main/webapp/dist'),
     filename: 'app.bundle.js',
+    publicPath: '/dist',
   },
   module: {
     rules: [
@@ -35,9 +37,13 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Blog',
       filename: 'index.html',
+      meta: {
+        viewport: 'minimum-scale=1, initial-scale=1, width=device-width',
+      },
     }),
     new HtmlWebpackRootPlugin(),
   ],

@@ -1,10 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Route } from 'react-router-dom';
+import { Home, Login } from './pages';
 
-class App extends React.Component {
-  render() {
-    return <div className='main'>메인 페이지</div>;
-  }
-}
+const App = () => {
+  return (
+    <>
+      <Route path='/' exact component={Home}></Route>
+      <Route path='/login' component={Login}></Route>
+    </>
+  );
+};
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default App;
