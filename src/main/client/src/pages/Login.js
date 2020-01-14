@@ -69,6 +69,7 @@ const Login = () => {
             size='large'
             color='primary'
             classes={{ root: styles.submit }}
+            disabled
           >
             Sign In
           </Button>
