@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'src/main/views'),
@@ -48,6 +49,7 @@ module.exports = {
       filename: 'admin.html',
       chunks: ['admin'],
     }),
+    new HtmlWebpackRootPlugin(),
   ],
   devtool: 'eval',
   cache: true,
