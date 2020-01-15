@@ -1,0 +1,18 @@
+###
+GET http://localhost:8080/api/test
+
+###
+GET http://localhost:8080/hello/test
+
+###
+POST http://localhost:8080/login/processing
+Content-Type: application/json
+
+{"userId": "zlagusdbs", "userPassword": "1111"}
+
+###
+GET http://localhost:8080/api/test
+auth_token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJ6bGFndXNkYnMiLCJpc3MiOiJ6bGFndXNkYnMiLCJleHAiOjE1ODAyNDQxNzgsInJvbCI6IltdIn0.7SsC6doGO7KDgYrIV0IHe1lsfIa3d3IePHFDaQqjB90
+
+###
+
