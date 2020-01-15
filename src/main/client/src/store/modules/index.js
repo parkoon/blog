@@ -1,5 +1,4 @@
-const reducer = (state, action) => {
-  return state;
-};
+import { combineReducers } from 'redux';
+import navigation from './navigation';
 
-export default reducer;
+export default combineReducers({ navigation });
