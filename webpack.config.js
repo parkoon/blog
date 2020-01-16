@@ -47,6 +47,6 @@ module.exports = {
     }),
     new HtmlWebpackRootPlugin(),
   ],
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   mode: 'development',
 };
