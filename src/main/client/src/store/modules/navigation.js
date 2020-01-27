@@ -2,6 +2,7 @@ import produce from 'immer';
 import uuidv1 from 'uuid/v1';
 
 const initialState = {
+  open: true,
   mode: 'default', // default, edit
   menus: [
     {
@@ -30,6 +31,7 @@ const CHANGE_MODE = 'CHANGE_MODE';
 const ADD_MENU = 'ADD_MENU';
 const DELETE_MENU = 'DELETE_MENU';
 const CHANGE_MENU_TEXT = 'CHANGE_MENU_TEXT';
+const TOGGLE_NAVIGATION = 'TOGGLE_NAVIGATION';
 
 export function changeMode(mode) {
   return {
@@ -59,6 +61,12 @@ export function changeMenuText({ id, text }) {
     type: CHANGE_MENU_TEXT,
     id,
     text,
+  };
+}
+
+export function toggleNavigation() {
+  return {
+    type: TOGGLE_NAVIGATION,
   };
 }
 
@@ -99,6 +107,9 @@ export default function navigation(state = initialState, action) {
             }
           }
         }
+        break;
+      case TOGGLE_NAVIGATION:
+        draft.open = !draft.open;
         break;
       default:
         return draft;

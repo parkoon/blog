@@ -1,12 +1,15 @@
 import React from 'react';
 import NavigationContainer from '../containers/NavigationContainer';
 
-const List = () => {
+const Header = () => {
   return (
-    <div>
+    <header>
+      <h1>
+        <a href='#'>Blog</a>
+      </h1>
       <NavigationContainer />
-    </div>
+    </header>
   );
 };
 
-export default List;
+export default Header;
