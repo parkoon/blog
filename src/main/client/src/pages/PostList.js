@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import PostListContainer from '../containers/PostListContainer';
 
-const Posts = () => {
+const PostList = () => {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default PostList;

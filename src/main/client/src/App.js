@@ -1,11 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Posts } from './pages';
+import { Route, Switch } from 'react-router-dom';
+import { PostList } from './pages';
 
 const App = () => {
   return (
     <>
-      <Route path='/' exact component={Posts}></Route>
+      <Route path='/' exact component={PostList}></Route>
+      <Switch>
+        <Route path='/p/:id' component={} />
+        {/* <Route component={} /> */}
+      </Switch>
     </>
   );
 };

@@ -1,17 +1,18 @@
 import React from 'react';
 
 const PostItem = ({ post }) => {
+  const { title, body, userId } = post;
   return (
     <div>
       <a href='/'>
-        <strong>{post.title}</strong>
-        <p>{post.body}</p>
+        <strong>{title}</strong>
+        <p>{body}</p>
         <div>
-          <span>{post.userId}</span>
+          <span>{userId}</span>
         </div>
       </a>
     </div>
   );
 };
 
-export default PostItem;
+export default React.memo(PostItem);

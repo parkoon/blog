@@ -1,21 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getPosts } from '../modules/posts';
 import PostList from '../components/PostList';
 
-const PostsContainer = ({ loading, posts, getPosts }) => {
+const PostsListContainer = () => {
+  const posts = useSelector(({ posts }) => posts);
+  const dispatch = useDispatch();
+
+  const { loading, posts } = posts;
+
   useEffect(() => {
-    getPosts();
-    return () => {};
-  }, [getPosts]);
+    dispatch(getPosts());
+  }, []);
 
   return <PostList loading={loading} posts={posts} />;
 };
 
-export default connect(
-  ({ posts }) => ({
-    loading: posts.loading,
-    posts: posts.posts,
-  }),
-  { getPosts },
-)(PostsContainer);
+export default PostsListContainer;
