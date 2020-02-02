@@ -1,6 +1,6 @@
 package com.hhwaaaaa1.blog.configurer.security.userDetailsService;
 
-import com.hhwaaaaa1.blog.enums.UserRole;
+import com.hhwaaaaa1.blog.enumeration.UserRole;
 import com.hhwaaaaa1.blog.configurer.security.userDetails.LoginUser;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
