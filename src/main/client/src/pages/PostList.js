@@ -1,11 +1,12 @@
 import React from 'react';
-import Header from '../components/Header';
+import HeaderContainer from '../containers/HeaderContainer';
 import PostListContainer from '../containers/PostListContainer';
 
 const PostList = () => {
   return (
     <>
-      <Header />
+      <HeaderContainer />
+      <hr />
       <main role='main'>
         <PostListContainer />
       </main>

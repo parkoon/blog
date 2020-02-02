@@ -4,10 +4,11 @@ import { getPosts } from '../modules/posts';
 import PostList from '../components/PostList';
 
 const PostsListContainer = () => {
-  const posts = useSelector(({ posts }) => posts);
+  const { posts, loading } = useSelector(state => ({
+    posts: state.posts.posts,
+    loading: state.posts.loading,
+  }));
   const dispatch = useDispatch();
-
-  const { loading, posts } = posts;
 
   useEffect(() => {
     dispatch(getPosts());

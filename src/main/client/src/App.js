@@ -1,15 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { PostList } from './pages';
+import { PostList, Post, Login } from './pages';
 
 const App = () => {
   return (
     <>
-      <Route path='/' exact component={PostList}></Route>
-      <Switch>
-        <Route path='/p/:id' component={} />
-        {/* <Route component={} /> */}
-      </Switch>
+      <Route path='/' exact component={PostList} />
+      <Route path='/login' component={Login} />
+      {/* <Route path='/post/:id' component={Post} /> */}
+      {/* <Switch>
+        <Route component={} />
+      </Switch> */}
     </>
   );
 };
