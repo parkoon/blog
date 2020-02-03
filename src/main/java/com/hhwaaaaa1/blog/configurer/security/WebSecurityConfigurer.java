@@ -1,5 +1,6 @@
 package com.hhwaaaaa1.blog.configurer.security;
 
+import com.hhwaaaaa1.blog.api.repository.mem.UserRepository;
 import com.hhwaaaaa1.blog.configurer.security.enumeration.URL;
 import com.hhwaaaaa1.blog.configurer.security.filter.AuthFilter;
 import com.hhwaaaaa1.blog.configurer.security.filter.LoginFilter;
@@ -13,6 +14,7 @@ import com.hhwaaaaa1.blog.configurer.security.userDetailsService.LoginUserDetail
 import com.hhwaaaaa1.blog.configurer.security.utility.AuthRequestMatcher;
 import com.hhwaaaaa1.blog.configurer.security.utility.JwtDecoder;
 import com.hhwaaaaa1.blog.configurer.security.utility.JwtFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,13 +29,17 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserRepository userRepository;
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //@formatter:off
         auth
             .authenticationProvider(
                 LoginProvider.builder()
-                    .setLoginUserDetailsService(new LoginUserDetailsService())
+                    .setLoginUserDetailsService(new LoginUserDetailsService(userRepository))
                     .setEncoder(new BCryptPasswordEncoder())
                     .build()
             )

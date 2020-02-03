@@ -1,6 +1,7 @@
 package com.hhwaaaaa1.blog.api.entity.mem;
 
 import com.hhwaaaaa1.blog.api.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class User extends BaseEntity {
     @Column(name = "hp", length = 20)
     private String hp;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<UserRole> userRoles;
 
 
@@ -79,5 +80,13 @@ public class User extends BaseEntity {
 
     public void setHp(String hp) {
         this.hp = hp;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }

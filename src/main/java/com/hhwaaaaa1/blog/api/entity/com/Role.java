@@ -16,8 +16,8 @@ public class Role extends BaseEntity {
     @Column(name = "role_nm", length = 50)
     private String roleNm;
 
-    @OneToMany(mappedBy = "role")
-    private List<UserRole> userRole;
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
+    private List<UserRole> userRoles;
 
 
     public String getRoleCd() {
