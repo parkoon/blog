@@ -1,18 +1,20 @@
 package com.hhwaaaaa1.blog.configurer.security;
 
-import com.hhwaaaaa1.blog.configurer.security.enums.URL;
-import com.hhwaaaaa1.blog.configurer.security.filters.AuthFilter;
-import com.hhwaaaaa1.blog.configurer.security.filters.LoginFilter;
-import com.hhwaaaaa1.blog.configurer.security.handlers.AuthAuthenticationFailurehandler;
-import com.hhwaaaaa1.blog.configurer.security.handlers.AuthAuthenticationSuccessHandler;
-import com.hhwaaaaa1.blog.configurer.security.handlers.LoginAuthenticationFailureHandler;
-import com.hhwaaaaa1.blog.configurer.security.handlers.LoginAuthenticationSuccessHandler;
-import com.hhwaaaaa1.blog.configurer.security.providers.AuthProvider;
-import com.hhwaaaaa1.blog.configurer.security.providers.LoginProvider;
+import com.hhwaaaaa1.blog.api.repository.mem.UserRepository;
+import com.hhwaaaaa1.blog.configurer.security.enumeration.URL;
+import com.hhwaaaaa1.blog.configurer.security.filter.AuthFilter;
+import com.hhwaaaaa1.blog.configurer.security.filter.LoginFilter;
+import com.hhwaaaaa1.blog.configurer.security.handler.AuthAuthenticationFailurehandler;
+import com.hhwaaaaa1.blog.configurer.security.handler.AuthAuthenticationSuccessHandler;
+import com.hhwaaaaa1.blog.configurer.security.handler.LoginAuthenticationFailureHandler;
+import com.hhwaaaaa1.blog.configurer.security.handler.LoginAuthenticationSuccessHandler;
+import com.hhwaaaaa1.blog.configurer.security.provider.AuthProvider;
+import com.hhwaaaaa1.blog.configurer.security.provider.LoginProvider;
 import com.hhwaaaaa1.blog.configurer.security.userDetailsService.LoginUserDetailsService;
-import com.hhwaaaaa1.blog.configurer.security.utils.AuthRequestMatcher;
-import com.hhwaaaaa1.blog.configurer.security.utils.JwtDecoder;
-import com.hhwaaaaa1.blog.configurer.security.utils.JwtFactory;
+import com.hhwaaaaa1.blog.configurer.security.utility.AuthRequestMatcher;
+import com.hhwaaaaa1.blog.configurer.security.utility.JwtDecoder;
+import com.hhwaaaaa1.blog.configurer.security.utility.JwtFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,13 +29,17 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserRepository userRepository;
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //@formatter:off
         auth
             .authenticationProvider(
                 LoginProvider.builder()
-                    .setLoginUserDetailsService(new LoginUserDetailsService())
+                    .setLoginUserDetailsService(new LoginUserDetailsService(userRepository))
                     .setEncoder(new BCryptPasswordEncoder())
                     .build()
             )
@@ -54,6 +60,10 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .and()
             .authorizeRequests()
                 .antMatchers(URL.DEFAULT_LOGIN_FORM_PATH.value())
+                    .permitAll()
+                .and()
+            .authorizeRequests()
+                .antMatchers(URL.ROOT.value())
                     .permitAll()
                 .and()
             .authorizeRequests()

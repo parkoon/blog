@@ -2,19 +2,23 @@ spring:
   profiles:
     include: logback
 
-  datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    pas sword:
-
   h2:
     console:
       enabled: true
       path: /h2-console
 
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+
+  # 항목 추가 및 삭제 시, JpaConfigurer.jpaProperties 설정필요(값 수정은 상관없음)
   jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-    database: h2
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        hbm2ddl:
+          auto: create
+        show_sql: true
+        format_sql: true
