@@ -10,7 +10,7 @@ public class RootController {
         return "index";
     }
 
-    @RequestMapping(value = "/{path:[^\\.]*}")
+    @RequestMapping(value = "/{path:[^\\.]*}/{id:[^\\.]*}")
     public String redirect() {
         return "forward:/";
     }

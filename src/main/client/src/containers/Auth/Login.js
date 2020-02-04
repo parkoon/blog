@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
+import { AuthContent } from '../../components/Auth';
 
-const Login = ({ login }) => {
+const Login = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <div>
-      <h1>로그인</h1>
+    <AuthContent title='로그인'>
       <form>
         <fieldset>
           <div>
-            <label htmlFor='userEmail'>아이디</label>
+            <label htmlFor='userId'>아이디</label>
             <input
               id='userId'
               type='text'
@@ -18,7 +18,7 @@ const Login = ({ login }) => {
             />
           </div>
           <div>
-            <label htmlFor='userPassword'>패스워드</label>
+            <label htmlFor='userPassword'>비밀번호</label>
             <input
               id='userPassword'
               type='password'
@@ -30,7 +30,7 @@ const Login = ({ login }) => {
           </div>
         </fieldset>
       </form>
-    </div>
+    </AuthContent>
   );
 };
 

@@ -16,7 +16,7 @@ const Header = ({ user, onLogout }) => {
           </button>
         </>
       ) : (
-        <Link to='/login'>LOGIN</Link>
+        <Link to='/auth/login'>LOGIN</Link>
       )}
       {/* <NavigationContainer /> */}
     </header>
