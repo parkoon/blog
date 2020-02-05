@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { AuthContent } from '../../components/Auth';
+import { login } from '../../modules/auth';
 
 const Login = () => {
   const [userId, setUserId] = useState('');
-  const [password, setPassword] = useState('');
+  const [userPassword, setUserPassword] = useState('');
 
   return (
     <AuthContent title='로그인'>
-      <form>
+      <form onSubmit={() => login(userId, userPassword)}>
         <fieldset>
           <div>
             <label htmlFor='userId'>아이디</label>
@@ -22,7 +23,7 @@ const Login = () => {
             <input
               id='userPassword'
               type='password'
-              onChange={({ target: { value } }) => setPassword(value)}
+              onChange={({ target: { value } }) => setUserPassword(value)}
             />
           </div>
           <div>

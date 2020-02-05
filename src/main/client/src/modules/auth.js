@@ -1,14 +1,16 @@
 import { handleActions } from 'redux-actions';
+import * as api from '../lib/api';
 
-const LOGIN = 'account/LOGIN';
-const LOGIN_SUCCESS = 'account/LOGIN_SUCCESS';
-const LOGIN_FAILURE = 'account/LOGIN_FAILURE';
-const LOGOUT = 'account/LOGOUT';
+const LOGIN = 'auth/LOGIN';
+const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
+const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
+const LOGOUT = 'auth/LOGOUT';
 
-export const login = ({ email, password }) => async dispatch => {
+export const login = ({ userId, userPassword }) => async dispatch => {
   dispatch({ type: LOGIN, loading: true });
   try {
-    // const response = await
+    const response = await api.login(userId, userPassword);
+    console.log(response);
     dispatch({
       type: LOGIN_SUCCESS,
       // token: response. ... ,
