@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
-import * as api from '../lib/api';
+import produce from 'immer';
+import * as authAPI from '../lib/api/auth';
 
 const LOGIN = 'auth/LOGIN';
 const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
@@ -7,18 +8,12 @@ const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
 const LOGOUT = 'auth/LOGOUT';
 
 export const login = ({ userId, userPassword }) => async dispatch => {
-  dispatch({ type: LOGIN, loading: true });
+  dispatch({ type: LOGIN });
   try {
-    const response = await api.login(userId, userPassword);
-    console.log(response);
-    dispatch({
-      type: LOGIN_SUCCESS,
-      // token: response. ... ,
-      user: { email, password },
-      loading: false,
-    });
+    await authAPI.login({ userId, userPassword });
+    dispatch({ type: LOGIN_SUCCESS });
   } catch (e) {
-    dispatch({ type: LOGIN_FAILURE, loading: false });
+    dispatch({ type: LOGIN_FAILURE });
     throw e;
   }
 };
@@ -28,19 +23,29 @@ export const logout = () => ({
 });
 
 const initialState = {
-  token: null,
-  user: { id: 'test' },
-  loading: false,
+  login: {
+    loading: false,
+    logged: false,
+  },
 };
 
-const account = handleActions(
+const auth = handleActions(
   {
-    // [LOGIN]
-    [LOGOUT]: state => ({
-      user: null,
-    }),
+    [LOGIN]: state =>
+      produce(state, draft => {
+        draft.login.loading = true;
+      }),
+    [LOGIN_SUCCESS]: state =>
+      produce(state, draft => {
+        draft.login.loading = false;
+        draft.login.logged = true;
+      }),
+    [LOGOUT]: state =>
+      produce(state, draft => {
+        draft.login.logged = false;
+      }),
   },
   initialState,
 );
 
-export default account;
+export default auth;

@@ -2,14 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavigationContainer from '../containers/NavigationContainer';
 
-const Header = ({ user, onLogout }) => {
+const Header = ({ userLogged, userLoggedInfo, onLogout }) => {
+  const { userId } = userLoggedInfo;
+
   return (
     <header>
       <h1>
         <a href='#'>Blog</a>
       </h1>
-      {!!user ? (
+      {!!userLogged ? (
         <>
+          <div>{userId}</div>
           <button type='button'>NEW POST</button>
           <button type='button' onClick={onLogout}>
             LOGOUT

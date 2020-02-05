@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { AuthContent } from '../../components/Auth';
 import { login } from '../../modules/auth';
+import { setUserInfo } from '../../modules/user';
 
-const Login = () => {
+const Login = ({ history }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const { loading, logged } = useSelector(({ auth: { login } }) => ({
+    loading: login.loading,
+    logged: login.logged,
+  }));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (logged) {
+      dispatch(setUserInfo({ userId }));
+      history.push('/');
+    }
+  }, [logged]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(login({ userId, userPassword }));
+  };
 
   return (
     <AuthContent title='로그인'>
-      <form onSubmit={() => login(userId, userPassword)}>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <div>
             <label htmlFor='userId'>아이디</label>
@@ -31,6 +50,7 @@ const Login = () => {
           </div>
         </fieldset>
       </form>
+      {loading && <div>로그인 중...</div>}
     </AuthContent>
   );
 };

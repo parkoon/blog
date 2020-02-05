@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "open-color": "^1.7.0",
     "react": "^16.12.0",
