@@ -1,4 +1,4 @@
-package com.hhwaaaaa1.blog.enumeration;
+package com.hhwaaaaa1.blog.support.enumeration;
 
 public enum PATH {
     DEFAULT_LOGIN_FORM_PATH("/js/react/login/form"),

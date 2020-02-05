@@ -2,7 +2,7 @@ package com.hhwaaaaa1.blog.configurer.security.filter;
 
 import com.hhwaaaaa1.blog.configurer.security.model.LoginModel;
 import com.hhwaaaaa1.blog.configurer.security.token.PreLoginToken;
-import com.hhwaaaaa1.blog.utility.CommonUtility;
+import com.hhwaaaaa1.blog.support.utility.CommonUtility;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

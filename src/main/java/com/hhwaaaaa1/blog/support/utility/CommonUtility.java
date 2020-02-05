@@ -1,4 +1,4 @@
-package com.hhwaaaaa1.blog.utility;
+package com.hhwaaaaa1.blog.support.utility;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

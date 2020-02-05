@@ -22,7 +22,7 @@ public class JwtDecoder {
 		DecodedJWT decodedJWT = null;
 
 		try{
-			Algorithm algorithm = Algorithm.HMAC256(com.hhwaaaaa1.blog.enumeration.JWT.PRIVATE_KEY.value());
+			Algorithm algorithm = Algorithm.HMAC256(com.hhwaaaaa1.blog.support.enumeration.JWT.PRIVATE_KEY.value());
 			JWTVerifier jwtVerifier = JWT.require(algorithm).build();
 			decodedJWT = jwtVerifier.verify(token);
 		}catch(Exception e){

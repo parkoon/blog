@@ -42,6 +42,6 @@ public class JwtFactory {
     }
 
     private Algorithm generatesAlgorithm(Authentication authentication) throws UnsupportedEncodingException {
-        return Algorithm.HMAC256(com.hhwaaaaa1.blog.enumeration.JWT.PRIVATE_KEY.value());
+        return Algorithm.HMAC256(com.hhwaaaaa1.blog.support.enumeration.JWT.PRIVATE_KEY.value());
     }
 }

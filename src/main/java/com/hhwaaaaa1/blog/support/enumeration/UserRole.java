@@ -1,4 +1,4 @@
-package com.hhwaaaaa1.blog.enumeration;
+package com.hhwaaaaa1.blog.support.enumeration;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;

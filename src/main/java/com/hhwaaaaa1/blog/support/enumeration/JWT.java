@@ -1,4 +1,4 @@
-package com.hhwaaaaa1.blog.enumeration;
+package com.hhwaaaaa1.blog.support.enumeration;
 
 public enum JWT {
     PRIVATE_KEY("hhwaaaaa1");

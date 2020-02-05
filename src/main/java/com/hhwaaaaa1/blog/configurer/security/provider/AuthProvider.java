@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.hhwaaaaa1.blog.configurer.security.token.PostAuthToken;
 import com.hhwaaaaa1.blog.configurer.security.token.PreAuthToken;
 import com.hhwaaaaa1.blog.configurer.security.utility.JwtDecoder;
-import com.hhwaaaaa1.blog.utility.CommonUtility;
+import com.hhwaaaaa1.blog.support.utility.CommonUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

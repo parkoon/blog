@@ -3,7 +3,7 @@ package com.hhwaaaaa1.blog.configurer.security.handler;
 import com.hhwaaaaa1.blog.configurer.security.constraint.SecurityConstraint;
 import com.hhwaaaaa1.blog.configurer.security.token.PostLoginToken;
 import com.hhwaaaaa1.blog.configurer.security.utility.JwtFactory;
-import com.hhwaaaaa1.blog.utility.CommonUtility;
+import com.hhwaaaaa1.blog.support.utility.CommonUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
